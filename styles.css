@@ -1,0 +1,433 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'SFMono-Regular', 'Menlo', 'Consolas', 'Monaco', monospace;
+    background-color: #050608;
+    color: #7af77a;
+    /* prevent the whole page from scrolling; only inner terminal content should scroll */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    /* let the container take available space while preventing page overflow */
+    flex: 1 1 auto;
+    padding: 20px;
+    gap: 20px;
+    overflow: hidden;
+    /* allow children to shrink properly so inner scrolling works */
+    min-height: 0;
+}
+
+/* Left Panel Styles */
+.left-panel {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+    position: relative;
+}
+
+.photo-container {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hanging-string {
+    width: 2px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.3);
+    border-left: 1px dashed rgba(255, 255, 255, 0.5);
+    margin-bottom: -2px;
+    z-index: 1;
+}
+
+.photo-frame {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(122, 247, 122, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(122, 247, 122, 0.1);
+    width: 100%;
+    max-width: 250px;
+    position: relative;
+    animation: dropIn 1s ease-out, swing 3.5s ease-in-out 1s infinite alternate;
+    transform-origin: top center;
+}
+
+@keyframes dropIn {
+    0% {
+        transform: translateY(-120%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(2deg);
+    }
+}
+
+.photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, rgba(122, 247, 122, 0.1) 0%, rgba(122, 247, 122, 0.05) 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.photo-placeholder::before {
+    /* decorative circle removed — no pseudo-element needed */
+    display: none;
+}
+
+.photo-text {
+    font-size: 24px;
+    color: rgba(122, 247, 122, 0.6);
+    font-weight: 500;
+    letter-spacing: 2px;
+    z-index: 1;
+}
+
+.status-line {
+    margin-top: 40px;
+    font-size: 10px;
+    color: rgba(122, 247, 122, 0.4);
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+/* Right Panel Styles */
+.right-panel {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    /* allow the terminal window to size correctly inside a flex container */
+    min-height: 0;
+}
+
+.terminal-window {
+    background-color: #0a0d0f;
+    border: 1px solid #7af77a;
+    border-radius: 8px;
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(122, 247, 122, 0.1);
+    /* ensure the terminal window can shrink so .terminal-content can scroll */
+    min-height: 0;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(122, 247, 122, 0.2);
+}
+
+.header-left {
+    flex: 1;
+}
+
+.name {
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.role {
+    font-size: 15px;
+    color: rgba(122, 247, 122, 0.8);
+    letter-spacing: 0.5px;
+}
+
+/* Role lines: keep inline on desktop with a dot separator, stack on mobile */
+.role-line {
+    display: inline;
+}
+.role-line + .role-line::before {
+    content: ' . ';
+    color: rgba(122, 247, 122, 0.8);
+    margin: 0 6px;
+}
+
+.header-right {
+    font-size: 12px;
+    color: rgba(122, 247, 122, 0.6);
+}
+
+.window-title {
+    font-size: 12px;
+}
+
+/* Command Navigation */
+.command-nav {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(122, 247, 122, 0.1);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.nav-link {
+    color: #7af77a;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 2px 4px;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.nav-separator {
+    color: rgba(122, 247, 122, 0.4);
+    margin: 0 8px;
+}
+
+/* Terminal Content */
+.terminal-content {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 0;
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+}
+
+.prompt {
+    /* current directory / prompt color */
+    color: #5c9ad6;
+    margin-right: 8px;
+}
+
+.command-text {
+    /* match the menu/nav link color */
+    color: #7af77a;
+}
+
+.terminal-output {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.terminal-output p {
+    margin-bottom: 8px;
+}
+
+.terminal-output ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.terminal-output li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.terminal-output li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #7af77a;
+}
+
+.terminal-output a {
+    /* links use the same color as the current directory/prompt (#5c9ad6)
+       so they match while being animated and after conversion */
+    color: #5c9ad6;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.terminal-output a:hover {
+    /* hover to the site's accent green */
+    color: #7af77a;
+}
+
+/* Terminal Input Line */
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(122, 247, 122, 0.1);
+}
+
+.input-cursor {
+    flex: 1;
+    outline: none;
+    /* typed input should match the menu/nav link color */
+    color: #7af77a;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    min-width: 200px;
+    caret-color: #7af77a;
+    position: relative;
+}
+
+.input-cursor::after {
+    content: '▊';
+    color: #7af77a;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Bottom Border */
+.bottom-border {
+    height: 4px;
+    background: linear-gradient(90deg, rgba(138, 43, 226, 0.6) 0%, rgba(138, 43, 226, 0.3) 100%);
+    width: 100%;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    color: rgba(122, 247, 122, 0.6);
+    background-color: #050608;
+}
+
+.footer-left {
+    color: #7af77a;
+}
+
+.footer-right {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .left-panel {
+        width: 100%;
+        padding-top: 20px;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+
+    .terminal-window {
+        padding: 15px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .role {
+        font-size: 13px;
+    }
+
+    .command-nav {
+        font-size: 12px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .nav-separator {
+        margin: 0 4px;
+    }
+
+    .terminal-content {
+        font-size: 14px;
+    }
+
+    /* keep role titles inline on mobile as well (dot separator kept) */
+
+    .photo-container {
+        max-width: 200px;
+    }
+
+    .photo-frame {
+        max-width: 180px;
+    }
+}
+
+/* Scrollbar Styling */
+.terminal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+    background: rgba(122, 247, 122, 0.3);
+    border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(122, 247, 122, 0.5);
+}
+

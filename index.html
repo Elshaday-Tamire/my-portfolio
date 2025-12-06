@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elshaday Yoseph - Portfolio Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel: Hanging Photo -->
+        <div class="left-panel">
+            <div class="photo-container">
+                <div class="hanging-string"></div>
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <!-- Replace the placeholder text with your image file named `myphoto.png` -->
+                        <img src="myphoto.png" alt="Elshaday Tamire" class="profile-photo">
+                    </div>
+                </div>
+            </div>
+            <div class="status-line">interactive cv . terminal</div>
+        </div>
+
+        <!-- Right Panel: Terminal Window -->
+        <div class="right-panel">
+            <div class="terminal-window">
+                <!-- Terminal Header -->
+                    <div class="terminal-header">
+                    <div class="header-left">
+                        <h1 class="name">Elshaday Yoseph</h1>
+                        <p class="role">
+                            <span class="role-line">software engineer</span>
+                            <span class="role-line">data engineer</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Command Navigation Bar -->
+                <div class="command-nav">
+                    <a href="#" class="nav-link" data-command="help">help</a>
+                    <span class="nav-separator">|</span>
+                    <a href="#" class="nav-link" data-command="about">about</a>
+                    <span class="nav-separator">|</span>
+                    <a href="#" class="nav-link" data-command="projects">projects</a>
+                    <span class="nav-separator">|</span>
+                    <a href="#" class="nav-link" data-command="skills">skills</a>
+                    <span class="nav-separator">|</span>
+                    <a href="#" class="nav-link" data-command="experience">experience</a>
+                    <span class="nav-separator">|</span>
+                    <a href="#" class="nav-link" data-command="education">education</a>
+                    <span class="nav-separator">|</span>
+                    <a href="#" class="nav-link" data-command="contact">contact</a>
+                </div>
+
+                <!-- Terminal Content Area (initially empty; welcome message types on load) -->
+                <div class="terminal-content" id="terminalContent"></div>
+
+                <!-- Terminal Input Line -->
+                <div class="terminal-input-line">
+                    <span class="prompt">elshaday@portfolio:~$</span>
+                    <span class="input-cursor" contenteditable="true" id="terminalInput" spellcheck="false"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Border Accent -->
+    <div class="bottom-border"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span class="footer-left">elshaday@portfolio:~</span>
+        <span class="footer-right" id="datetime"></span>
+    </div>
+
+    <script src="terminal.js"></script>
+</body>
+</html>
+
