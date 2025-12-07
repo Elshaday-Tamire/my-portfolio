@@ -411,6 +411,13 @@ body {
     .photo-frame {
         max-width: 180px;
     }
+    
+    /* Mobile: hide the left panel (photo + hanging string) and make
+       the terminal the sole visible box for a cleaner mobile layout */
+    .left-panel {
+        display: none;
+    }
+
 }
 
 /* Scrollbar Styling */
