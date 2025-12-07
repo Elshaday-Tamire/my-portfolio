@@ -170,7 +170,7 @@ body {
 
 .name {
     font-size: 30px;
-    color: #ffffff;
+    color: #26b865;
     margin-bottom: 5px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -178,7 +178,8 @@ body {
 
 .role {
     font-size: 15px;
-    color: rgba(122, 247, 122, 0.8);
+    font-size: 15px;
+    color: #848c97;
     letter-spacing: 0.5px;
 }
 
@@ -378,6 +379,12 @@ body {
 
     .terminal-window {
         padding: 15px;
+    }
+
+    /* On mobile, remove the green border and shadow for a cleaner full-width look */
+    .terminal-window {
+        border: none;
+        box-shadow: none;
     }
 
     .name {
