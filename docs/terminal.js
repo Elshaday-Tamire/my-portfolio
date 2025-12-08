@@ -177,7 +177,7 @@ Frontend & Visualization:
 Email: elshadayrn13@gmail.com
 
 Links:
-  • LinkedIn: https://www.linkedin.com/in/elshaday-tamire
+  • LinkedIn: https://www.linkedin.com/in/elshaday-tamire-yoseph
   • GitHub: https://github.com/elshaday-tamire
 
 Feel free to reach out for collaborations, opportunities, or just to connect!
